@@ -11,7 +11,7 @@ class Clientes(models.Model):
     email= models.EmailField()
 
 class Servicios(models.Model):
-    nombre= models.CharField(max_length=30)
+    especialidad= models.CharField(max_length=30)
     profesional= models.CharField(max_length=30)
 
 class Proveedores(models.Model):

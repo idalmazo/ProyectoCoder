@@ -4,9 +4,9 @@
 <h3>Buscador</h3>
 {% endblock %}
 {% block contenidoQueCambia %}
-<form action="{% url 'buscar' %}" method="POST">{% csrf_token %}
+<form action="{% url 'buscar' %}" method="GET">
     <h3>Ingrese datos a buscar</h3>
-    <input type="text" name="Profesional" placeholder="Profesional" id="profesional">
+    <input type="varchar" name="Profesional" placeholder="Profesional" id="Profesional">
     <input type="submit" value="Buscar">
 </form>
 {% endblock %}

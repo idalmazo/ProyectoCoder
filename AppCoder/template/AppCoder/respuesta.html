@@ -1,0 +1,18 @@
+{% extends "appCoder/padre.html" %}
+{% load static %}
+{% block section_name %}
+<h3>Resultado de su búsqueda</h3>
+{% endblock %}
+{% block contenidoQueCambia %}
+<h1> Usted está buscando la especialidad de su profesional: {{Profesional}} </h1>
+    {% if Servicios %}
+    <ul>
+        {% for servicios in servicios %}
+        <li> {{Servicios.especialidad}} </li>
+        <li> {{Servicios.profesional}} </li>
+        <br>
+        {% endfor %}
+    </ul>
+    {% endif %}
+
+{% endblock %}

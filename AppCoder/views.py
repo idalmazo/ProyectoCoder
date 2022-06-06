@@ -1,3 +1,4 @@
+import re
 from django.http import HttpResponse
 from django.shortcuts import render
 from AppCoder.models import Curso
@@ -64,9 +65,9 @@ def serviciosFormulario(request):
         if miFormulario.is_valid():
             informacion = miFormulario.cleaned_data
                 
-        nombre = informacion['nombre']
+        rama = informacion['rama']
         profesional = informacion['profesional']
-        servicios  = Servicios (nombre=nombre, profesional=profesional) 
+        servicios  = Servicios (rama=rama, profesional=profesional) 
         servicios.save()
         return render(request, 'AppCoder/inicio.html')
     else:
@@ -96,5 +97,12 @@ def busquedaProfesional(request):
     return render(request, 'AppCoder/busquedaProfesional.html')        
 
 def buscar(request):
-    respuesta = f"Estoy buscando el profesional {request.GET['profesional']}"     
-    return HttpResponse (respuesta)  
+    #respuesta = ("Estoy buscando el profesional:"), {request.GET.get('Profesional')}
+    # request.GET ['profesional']}
+    if request.GET ['Profesional']:
+        profesional = request.GET['Profesional']
+        servicios = Servicios.objects.filter (profesional=profesional)
+        return render(request, 'AppCoder/respuesta.html', {"servicios":servicios, 'Profesional':profesional})
+    else:
+        respuesta = "No se ha ingresado ningún profesional"
+        return HttpResponse (respuesta)  
