@@ -1,0 +1,12 @@
+{% extends "appCoder/padre.html" %}
+{% load static %}
+{% block section_name %}
+<h3>Buscador</h3>
+{% endblock %}
+{% block contenidoQueCambia %}
+<form action="{% url 'buscar' %}" method="POST">{% csrf_token %}
+    <h3>Ingrese datos a buscar</h3>
+    <input type="text" name="Profesional" placeholder="Profesional" id="profesional">
+    <input type="submit" value="Buscar">
+</form>
+{% endblock %}
